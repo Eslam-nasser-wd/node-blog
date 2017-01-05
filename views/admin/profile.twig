@@ -1,0 +1,110 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Profile -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                My Profile
+                                <small>Admins</small>
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                
+                                <div class="col-sm-4 left-side">
+                                    <img src="/admin/images/user.png" alt="User name">
+                                    <h2>Eslam nasser</h2>
+                                    <h4>Super Admin</h4>
+                                    <a href="edit-profile" class="btn btn-primary">
+                                        Edit my profile
+                                    </a>
+                                </div>
+                                <div class="col-sm-8 right-side">
+                                    <div class="row">
+                                        <div class="col-xs-6">Name: </div>
+                                        <div class="col-xs-6">Eslam</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Email: </div>
+                                        <div class="col-xs-6">eslamnasser@gmail.com</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Role: </div>
+                                        <div class="col-xs-6">Super Cool Admin</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Input -->
+            
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+{% block blockCSS %}
+    <style>
+        .left-side{
+            height: 600px;
+            border-right: 1px solid #EEE;
+            text-align: center;
+        }
+        .left-side img{
+            width: 60%;
+            margin: auto;
+            display: block;
+            border-radius: 100%;
+            padding: 2px;
+            border: 1px solid #EEE;
+        }
+        .left-side h4{
+            font-weight: 100;
+        }
+        .left-side .btn{
+            display: block;
+            margin-top: 30px;
+            font-size: 16px !important;
+        }
+
+        .right-side{
+            padding-top: 50px;
+        }
+        .right-side .row{
+            border-bottom: 1px solid #EEE;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .right-side .row:last-of-type{
+            border: 0;
+        }
+        .right-side .col-xs-6{margin-bottom: 0 !important}
+    </style>
+{% endblock %}
+
+
+{% block blockJS %}{% endblock %}
+{% block JSFire %}{% endblock %}

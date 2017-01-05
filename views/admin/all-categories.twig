@@ -1,0 +1,113 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+  
+
+  <section class="content">
+        <div class="container-fluid">
+            <!-- All Categories -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                All Categories
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Created at</th>
+                                        <th class="text-center">Edit</th>
+                                        <th class="text-center">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Created at</th>
+                                        <th class="text-center">Edit</th>
+                                        <th class="text-center">Delete</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    
+                                    {% for category in categories %}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td>{{category.name}}</td>
+                                        <td>{{category.createdAt | date("m/d/Y")}}</td>
+                                        <td class="text-center js-modal-buttons">
+                                            <button type="button" data-color="red" data-toggle="modal" data-target="#mdModal{{ loop.index }}" class="btn bg-red waves-effect">
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="edit-category?category_id={{category._id}}" type="button" class="btn bg-yellow waves-effect">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# All Categories -->
+        </div>
+    </section>
+
+
+    {% for category in categories %}
+        <!-- Material Modal -->
+        <div class="modal fade" id="mdModal{{ loop.index }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-col-red">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to <b>DELETE</b> this category ( <i>{{category.name}}</i> )?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="all-categories/{{category._id}}?_method=DELETE" method="POST" style="display: inline">
+                            <button type="submit" class="btn btn-link waves-effect">Yes, delete it</button>
+                        </form>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
+
+{% block blockJS %}
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="/admin/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="/admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+{% endblock %}
+
+{% block JSFire %}
+    <script src="/admin/js/pages/tables/jquery-datatable.js"></script>
+{% endblock %}

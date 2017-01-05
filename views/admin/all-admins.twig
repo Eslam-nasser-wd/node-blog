@@ -1,0 +1,99 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+  
+
+  <section class="content">
+        <div class="container-fluid">
+            <!-- All Admins -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                All Admins
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Created at</th>
+                                        <th class="text-center">Edit</th>
+                                        <th class="text-center">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Created at</th>
+                                        <th class="text-center">Edit</th>
+                                        <th class="text-center">Delete</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for user in users %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{user.name}}</td>
+                                        <td>{{user.role}}</td>
+                                        <td>{{user.createdAt|date("d/m/Y")}}</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-danger waves-effect">
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn bg-yellow waves-effect">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# All Admins -->
+        </div>
+    </section>
+
+
+
+{% endblock %}
+
+{% block blockJS %}
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="/admin/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="/admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="/admin/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="/admin/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="/admin/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="/admin/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="/admin/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="/admin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="/admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+{% endblock %}
+
+{% block JSFire %}
+    <script src="/admin/js/pages/tables/jquery-datatable.js"></script>
+{% endblock %}

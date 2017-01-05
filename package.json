@@ -1,18 +1,30 @@
 {
   "name": "mvc-blog",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "main": "app.js",
+  "engines": {
+    "node": "4.5.0",
+    "npm": "4.0.2"
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "supervisor ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
+    "cookie-session": "^2.0.0-alpha.2",
+    "crypto": "0.0.3",
     "debug": "~2.2.0",
     "express": "~4.14.0",
-    "morgan": "~1.7.0",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.5",
+    "morgan": "^1.7.0",
+    "multer": "^1.2.1",
     "node-sass-middleware": "0.9.8",
+    "password-hash": "^1.2.2",
     "serve-favicon": "~2.3.0",
     "twig": "~0.9.5"
-  }
+  },
+  "author": "Eslam nasser",
+  "license": "ISC"
 }

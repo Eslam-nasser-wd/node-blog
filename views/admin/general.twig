@@ -1,0 +1,117 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <!-- General -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                General Setting
+                                <small>Blog Settings</small>
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                <form id="form_validation" action="general" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Site name</label>
+                                            <input name="siteName" type="text" class="form-control" placeholder="Site name" value="{{settings.site_name}}" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Site description</label>
+                                            <textarea name="siteDescription" rows="5" maxlength="120" class="form-control no-resize" placeholder="Please type some small sentence that describes the whole site..." required>{{settings.site_description}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group demo-tagsinput-area">
+                                        <label>Site keywords <i>( Good for SEO )</i></label>
+                                        <div class="form-line">
+                                            <input name="siteKeywords" type="text" class="form-control" data-role="tagsinput" value="{{settings.site_name}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Site's logo</label>
+                                        <div class="imageUploaderWarpper">
+                                            <input name="siteLogo" type="file" id="postImageInput" required/>
+                                            <button type="button" class="btn bg-pink waves-effect">
+                                                <span class="text">Upload image</span>
+                                                &nbsp;&nbsp;<i class="material-icons">photo size select actual</i>
+                                            </button>
+                                            <span class="required-image">The same image will be used unless you upload a new one</span>
+                                            {% if  settings.site_logo %}
+                                            <div class="image-warpper" style="display: block">
+                                                <i class="material-icons">close</i>
+                                                <img src="{{siteUrl}}/uploads/settings/{{settings.site_logo.filename}}" id="imagePreview">
+                                            </div>
+                                            {% else %}
+                                            <div class="image-warpper">
+                                                <i class="material-icons">close</i>
+                                                <img src="#" id="imagePreview">
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-lg btn-block btn-submit-forms" type="submit">Publish post</button>
+                                    </div>
+                                </form>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- General -->
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block blockCSS %}
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="/admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="/admin/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block blockJS %}
+    <!-- Autosize Plugin Js -->
+    <script src="/admin/plugins/autosize/autosize.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="/admin/plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+{% endblock %}
+
+
+
+{% block JSFire %}
+    <script src="/admin/js/pages/forms/basic-form-elements.js"></script>
+{% endblock %}

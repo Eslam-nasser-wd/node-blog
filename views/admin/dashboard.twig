@@ -56,7 +56,7 @@
                 </div>
             </div>
             <!-- #END# Widgets -->
-            <!-- CPU Usage -->
+            <!-- CPU Usage 
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
@@ -310,4 +310,31 @@
         </div>
     </section>
 
+{% endblock %}
+
+
+{% block blockJS %}
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="/admin/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="/admin/plugins/raphael/raphael.min.js"></script>
+    <script src="/admin/plugins/morrisjs/morris.js"></script>
+
+    <!-- ChartJs -->
+    <script src="/admin/plugins/chartjs/Chart.bundle.js"></script>
+
+    <!-- Flot Charts Plugin Js -->
+    <script src="/admin/plugins/flot-charts/jquery.flot.js"></script>
+    <script src="/admin/plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="/admin/plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="/admin/plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="/admin/plugins/flot-charts/jquery.flot.time.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="/admin/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+{% endblock %}
+
+{% block JSFire %}
+    <script src="/admin/js/pages/index.js"></script>
 {% endblock %}

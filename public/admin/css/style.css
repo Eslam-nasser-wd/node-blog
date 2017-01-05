@@ -8000,3 +8000,81 @@ html.ie11 .dropdown-menu ul.menu li a {
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
 
+
+
+
+
+
+
+
+
+
+.sidebar .menu .list a:hover,
+.theme-red .sidebar .menu .list .toggled{
+  background-color: rgba(238, 238, 238, 0.44) !important
+}
+.small-label{
+  font-weight: 100;
+  font-size: 11px;
+}
+
+.imageUploaderWarpper #postImageInput{
+    display: none;
+}
+.imageUploaderWarpper button{width: 135px;}
+.imageUploaderWarpper i{
+  font-size: 20px;
+  top: 0px;
+}
+.imageUploaderWarpper .text{
+  display: inline-block;
+  position: relative;
+  top: -2px;
+}
+
+.demo-tagsinput-area .label-info{
+  background: #E91E63 !important;
+  padding: 5px 10px
+}
+
+.image-warpper{
+  display: none;
+  position: relative;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+.image-warpper i{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 35px;
+  color: #FFF;
+  opacity: .7;
+}
+.image-warpper i:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+.image-warpper #imagePreview{
+  width: 100%;
+  display: block;
+  margin: 10px auto;
+  border-radius: 4px;
+  padding: 2px;
+  border: 1px solid #EEE;
+}
+
+
+.btn-submit-forms{
+  margin-top: 50px;
+}
+
+.required-image{
+  font-size: 12px !important;
+  display: block;
+  margin-top: 5px;
+  font-weight: normal;
+  color: #F44336;
+  width: 170px;
+}

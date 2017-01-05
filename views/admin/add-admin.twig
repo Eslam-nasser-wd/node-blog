@@ -1,0 +1,125 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Add post -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Adding An Admin
+                                <small>Admins</small>
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                <form action="add-admin" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Admin name</label>
+                                            <input name="newUsername" type="text" class="form-control" placeholder="Admin name" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <div class="form-line">
+                                                <label>Password</label>
+                                                <input type="password" class="form-control" placeholder="Password" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-line">
+                                                <label>Confirm password</label>
+                                                <input name="newPassword" type="password" class="form-control" placeholder="Confirm password" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Admin email</label>
+                                            <input name="newEmail" type="email" class="form-control" placeholder="Admin email" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Admin role</label>
+                                        <select name="role" class="form-control show-tick" required>
+                                            <option value="" selected disabled>-- Please select --</option>
+                                            <option value="Admin">Super Admin</option>
+                                            <option value="Writer">Just A Writer</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Admin personal image</label>
+                                        <div class="imageUploaderWarpper">
+                                            <input name="userAvatar" type="file" id="postImageInput" required/>
+                                            <button type="button" class="btn bg-pink waves-effect">
+                                                <span class="text">Upload image</span>
+                                                &nbsp;&nbsp;<i class="material-icons">photo size select actual</i>
+                                            </button>
+                                            <div class="image-warpper">
+                                                <i class="material-icons">close</i>
+                                                <img src="#" id="imagePreview">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-lg btn-block btn-submit-forms" type="submit">Create admin</button>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Input -->
+            
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block blockCSS %}
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="/admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="/admin/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="/admin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block blockJS %}
+    <!-- Autosize Plugin Js -->
+    <script src="/admin/plugins/autosize/autosize.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="/admin/plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="/admin/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+{% endblock %}
+
+
+
+{% block JSFire %}
+    <script src="/admin/js/pages/forms/basic-form-elements.js"></script>
+{% endblock %}
