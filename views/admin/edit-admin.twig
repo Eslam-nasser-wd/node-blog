@@ -3,14 +3,14 @@
 {% block body %}
     <section class="content">
         <div class="container-fluid">
-            <!-- General -->
+            <!-- Add post -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                General Setting
-                                <small>Blog Settings</small>
+                                Adding An Admin
+                                <small>Admins</small>
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -28,53 +28,66 @@
                         <div class="body">
                             <div class="row clearfix">
                                 <div class="col-sm-12">
-                                <form id="form_validation" action="general" method="post" enctype="multipart/form-data">
-                                    <input name="thisSetting_id" type="text" value="{{settings._id}}" style="display: none">
+                                <form id="form_validation" action="edit-admin?user_id={{user._id}}&_method=PUT" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <label>Site name</label>
-                                            <input name="siteName" type="text" class="form-control" placeholder="Site name" value="{{settings.site_name}}" required/>
+                                            <label>Admin name</label>
+                                            <input name="editUsername" type="text" class="form-control" placeholder="Admin name" value="{{user.name}}" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <div class="form-line">
+                                                <label>Password</label>
+                                                <input type="password" class="form-control" placeholder="Password" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-line">
+                                                <label>Confirm password</label>
+                                                <input name="editPassword" type="password" class="form-control" placeholder="Confirm password" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <label>Site description</label>
-                                            <textarea name="siteDescription" rows="5" maxlength="120" class="form-control no-resize" placeholder="Please type some small sentence that describes the whole site..." required>{{settings.site_description}}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group demo-tagsinput-area">
-                                        <label>Site keywords <i>( Good for SEO )</i></label>
-                                        <div class="form-line">
-                                            <input name="siteKeywords" type="text" class="form-control" data-role="tagsinput" value="{{settings.site_keywords}}" required>
+                                            <label>Admin email</label>
+                                            <input name="editEmail" type="email" class="form-control" placeholder="Admin email" value="{{user.email}}" required />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Site's logo</label>
+                                        <label>Admin role</label>
+                                        <select name="role" class="form-control show-tick" required>
+                                            <option disabled>-- Please select --</option>
+                                            <option {{ (user.role == 'Admin') ? 'selected' : ''   }} value="Admin">Super Admin</option>
+                                            <option {{ (user.role == 'Writer') ? 'selected' : ''   }} value="Writer">Just A Writer</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Admin personal image</label>
                                         <div class="imageUploaderWarpper">
-                                            <input name="siteLogo" type="file" id="postImageInput" required/>
+                                            <input name="userAvatar" type="file" id="postImageInput" required/>
                                             <button type="button" class="btn bg-pink waves-effect">
                                                 <span class="text">Upload image</span>
                                                 &nbsp;&nbsp;<i class="material-icons">photo size select actual</i>
                                             </button>
-                                            <span class="required-image">The same image will be used unless you upload a new one</span>
-                                            {% if  settings.site_logo %}
+                                            {% if user.avatarUrl %}
                                             <div class="image-warpper" style="display: block">
                                                 <i class="material-icons">close</i>
-                                                <img src="{{siteUrl}}/uploads/settings/{{settings.site_logo.filename}}" id="imagePreview">
+                                                <img src="{{siteUrl}}/uploads/admins/{{user.avatarUrl.filename}}" id="imagePreview">
                                             </div>
                                             {% else %}
-                                            <div class="image-warpper">
+                                            <div class="image-warpper" style="display: block">
                                                 <i class="material-icons">close</i>
-                                                <img src="#" id="imagePreview">
+                                                <img src="/admin/images/no-image.png" id="imagePreviewo image ">
                                             </div>
                                             {% endif %}
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary btn-lg btn-block btn-submit-forms" type="submit">Publish post</button>
+                                        <button class="btn btn-primary btn-lg btn-block btn-submit-forms" type="submit">Create admin</button>
                                     </div>
                                 </form>
-
                                 </div>
                             </div>
                             
@@ -82,7 +95,8 @@
                     </div>
                 </div>
             </div>
-            <!-- General -->
+            <!-- #END# Input -->
+            
         </div>
     </section>
 {% endblock %}
@@ -95,8 +109,8 @@
     <!-- Wait Me Css -->
     <link href="/admin/plugins/waitme/waitMe.css" rel="stylesheet" />
 
-    <!-- Bootstrap Tagsinput Css -->
-    <link href="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <!-- Bootstrap Select Css -->
+    <link href="/admin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 {% endblock %}
 
 
@@ -107,8 +121,8 @@
     <!-- Moment Plugin Js -->
     <script src="/admin/plugins/momentjs/moment.js"></script>
 
-    <!-- Bootstrap Tags Input Plugin Js -->
-    <script src="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="/admin/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 {% endblock %}
 
 

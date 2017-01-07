@@ -29,25 +29,31 @@
                             <div class="row clearfix">
                                 
                                 <div class="col-sm-4 left-side">
-                                    <img src="/admin/images/user.png" alt="User name">
-                                    <h2>Eslam nasser</h2>
-                                    <h4>Super Admin</h4>
-                                    <a href="edit-profile" class="btn btn-primary">
+
+                                    {% if user.avatarUrl %}
+                                    <img src="{{siteUrl}}/uploads/admins/{{user.avatarUrl.filename}}" id="imagePreview">
+                                    {% else %}
+                                    <img src="/admin/images/no-image.png">
+                                    {% endif %}
+
+                                    <h2>{{user.name}}</h2>
+                                    <h4>{{user.role}}</h4>
+                                    <a href="edit-admin?user_id={{user._id}}" class="btn btn-primary">
                                         Edit my profile
                                     </a>
                                 </div>
                                 <div class="col-sm-8 right-side">
                                     <div class="row">
                                         <div class="col-xs-6">Name: </div>
-                                        <div class="col-xs-6">Eslam</div>
+                                        <div class="col-xs-6">{{user.name}}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-6">Email: </div>
-                                        <div class="col-xs-6">eslamnasser@gmail.com</div>
+                                        <div class="col-xs-6">{{user.email}}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-6">Role: </div>
-                                        <div class="col-xs-6">Super Cool Admin</div>
+                                        <div class="col-xs-6">{{user.role}}</div>
                                     </div>
                                 </div>
 
@@ -81,8 +87,9 @@
             padding: 2px;
             border: 1px solid #EEE;
         }
-        .left-side h4{
+        .left-side h2, .left-side h4{
             font-weight: 100;
+            text-transform: uppercase
         }
         .left-side .btn{
             display: block;

@@ -6,6 +6,7 @@ var User            = require('../../models/User')
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('admin/login');
+    console.log(  passwordHash.verify( '1234', 'sha1$12ce1fbb$1$4b5a62571034061c849651167eb7119d312b2fac')  )
 });
 
 router.post('/',function(req, res){
@@ -24,6 +25,7 @@ router.post('/',function(req, res){
             } else {
                 req.session.name = inputUsername;
                 req.session.role = user.role;
+                req.session.email = user.email;
                 req.session.image = user.avatarUrl.filename;
                 req.session.userId = user._id
                 res.redirect('dashboard');

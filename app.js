@@ -26,10 +26,12 @@ var addCategory   = require('./routes/admin/add-category');
 var editCategory  = require('./routes/admin/edit-category');
 var allAdmins     = require('./routes/admin/all-admins');
 var addAdmin      = require('./routes/admin/add-admin');
+var editAdmin     = require('./routes/admin/edit-admin');
 var general       = require('./routes/admin/general');
 var contact       = require('./routes/admin/contact');
 var profile       = require('./routes/admin/profile');
 var logout        = require('./routes/admin/logout');
+var notAllowed    = require('./routes/admin/not-allowed');
 
 
 
@@ -43,7 +45,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
 // database stuff
-mongoose.connect(config.database); // connect to database
+var options = { server: { socketOptions: { connectTimeoutMS: 10000 }}};
+mongoose.connect(config.database, options); // connect to database
 app.set('superSecret', config.secret); // secret variable
 
 // uncomment after placing your favicon in /public
@@ -65,6 +68,10 @@ app.use(cookieSession({
   keys: ['icEgv95GyU', 'r5oQr21nj5'],
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
+app.use(function(req, res, next){
+    res.locals.session = req.session;
+    next();
+});
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
@@ -88,22 +95,30 @@ app.use('/admin/all-categories',isAuthenticated, allCategories);
 app.use('/admin/add-category',isAuthenticated, addCategory);
 app.use('/admin/edit-category',isAuthenticated, editCategory);
 
-app.use('/admin/all-admins',isAuthenticated, allAdmins);
-app.use('/admin/add-admin',isAuthenticated, addAdmin);
+app.use('/admin/all-admins',isAuthenticated, isAdmin, allAdmins);
+app.use('/admin/add-admin',isAuthenticated, isAdmin, addAdmin);
+app.use('/admin/edit-admin',isAuthenticated, isAdmin, editAdmin);
 
-app.use('/admin/general',isAuthenticated, general);
-app.use('/admin/contact',isAuthenticated, contact);
+app.use('/admin/general',isAuthenticated, isAdmin, general);
+app.use('/admin/contact',isAuthenticated, isAdmin, contact);
 
 app.use('/admin/profile',isAuthenticated, profile);
 app.use('/admin/logout',isAuthenticated, logout);
+app.use('/admin/not-allowed',isAuthenticated, notAllowed);
 
+// Check if the user have a session
 function isAuthenticated(req, res, next) {
     if (req.session.name)
         return next();
     res.redirect('/admin/login');
 }
 
-
+// Check if the user has access to some pages
+function isAdmin(req, res, next) {
+    if (req.session.role == 'Admin')
+        return next();
+    res.redirect('/admin/not-allowed');
+}
 
 
 // catch 404 and forward to error handler

@@ -55,15 +55,15 @@
                                         <td>{{user.name}}</td>
                                         <td>{{user.role}}</td>
                                         <td>{{user.createdAt|date("d/m/Y")}}</td>
-                                        <td class="text-center">
-                                            <button type="button" class="btn btn-danger waves-effect">
+                                        <td class="text-center js-modal-buttons">
+                                            <button type="button" data-color="red" data-toggle="modal" data-target="#mdModal{{ loop.index }}" class="btn bg-red waves-effect">
                                                 <i class="material-icons">delete_forever</i>
                                             </button>
                                         </td>
                                         <td class="text-center">
-                                            <button type="button" class="btn bg-yellow waves-effect">
+                                            <a href="edit-admin?user_id={{user._id}}" type="button" class="btn bg-yellow waves-effect">
                                                 <i class="material-icons">edit</i>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                     {% endfor %}
@@ -77,6 +77,27 @@
         </div>
     </section>
 
+    {% for user in users %}
+        <!-- Material Modal -->
+        <div class="modal fade" id="mdModal{{ loop.index }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-col-red">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to <b>DELETE</b> this user ( <i>{{user.name}}</i> )?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="all-admins/{{user._id}}?_method=DELETE" method="post" style="display: inline">
+                            <button type="submit" class="btn btn-link waves-effect">Yes, delete it</button>
+                        </form>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 
 
 {% endblock %}
