@@ -114,7 +114,7 @@
         });
         // Get the cords
         google.maps.event.addListener(map, 'click', function(event) {
-            var dataUrl = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+event.latLng.lat()+','+event.latLng.lng()+'&sensor=true';
+            var dataUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+event.latLng.lat()+','+event.latLng.lng()+'&sensor=true';
             
             $('#latitude').val(event.latLng.lat());
             $('#longitude').val(event.latLng.lng());
