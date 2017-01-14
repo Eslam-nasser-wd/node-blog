@@ -10,9 +10,15 @@ var cookieSession         = require('cookie-session');
 var methodOverride        = require('method-override');
 var morgan                = require('morgan');
 var config                = require('./config');
+var Category              = require('./models/Category')
+var Settings              = require('./models/Settings')
 
 // Front
 var index         = require('./routes/index');
+var singlePost    = require('./routes/single-post');
+var singleCategory= require('./routes/single-category');
+var about         = require('./routes/about');
+var frontContact  = require('./routes/contact');
 
 // Back
 var admin         = require('./routes/admin/admin');
@@ -79,7 +85,11 @@ app.use(morgan('dev'));
 //  ROUTES              ||
 // =======================
 // front
-app.use('/', index);
+app.use('/', globalData, index);
+app.use('/single-post', globalData, singlePost);
+app.use('/categories', globalData, singleCategory);
+app.use('/about', globalData, about);
+app.use('/contact', globalData, frontContact);
 
 // back
 app.use('/admin', admin);
@@ -120,6 +130,17 @@ function isAdmin(req, res, next) {
     res.redirect('/admin/not-allowed');
 }
 
+// Pass some data to all front-end views
+function globalData(req, res, next) {
+    Category.find({}, function(err, items){
+         app.locals.categories = items
+    })
+    Settings.find({'active': 'true'})
+        .exec(function(err, items){
+            app.locals.general = items[0];
+        });
+    return next();
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,6 +6,7 @@ var Schema      = mongoose.Schema;
 module.exports = mongoose.model('Post', new Schema({ 
     title: String,
     by: String,
+    writer_id: String,
     category: String,
     short_description: String,
     content: String,

@@ -6,6 +6,10 @@
 
 (function($) {
 
+	$('a[href="#"]').on('click', function(){
+		e.preventDefault()
+	})
+
 	skel.breakpoints({
 		xlarge:	'(max-width: 1680px)',
 		large:	'(max-width: 1280px)',

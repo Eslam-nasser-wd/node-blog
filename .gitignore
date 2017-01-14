@@ -31,6 +31,9 @@ node_modules
 jspm_packages
 STATIC
 
+# Uploads 
+public/uploads/posts/*
+
 # Optional npm cache directory
 .npm
 

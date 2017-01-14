@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Site description</label>
-                                            <textarea name="siteDescription" rows="5" maxlength="120" class="form-control no-resize" placeholder="Please type some small sentence that describes the whole site..." required>{{settings.site_description}}</textarea>
+                                            <textarea id="tinymce" name="siteDescription" rows="5" maxlength="120" class="form-control no-resize" placeholder="Please type some small sentence that describes the whole site..." required>{{settings.site_description}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group demo-tagsinput-area">
@@ -107,6 +107,9 @@
     <!-- Moment Plugin Js -->
     <script src="/admin/plugins/momentjs/moment.js"></script>
 
+    <!-- TinyMCE -->
+    <script src="/admin/plugins/tinymce/tinymce.js"></script>
+
     <!-- Bootstrap Tags Input Plugin Js -->
     <script src="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
 {% endblock %}
@@ -115,4 +118,5 @@
 
 {% block JSFire %}
     <script src="/admin/js/pages/forms/basic-form-elements.js"></script>
+    <script src="/admin/js/pages/forms/editors.js"></script>
 {% endblock %}

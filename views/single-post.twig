@@ -1,0 +1,20 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <article class="post single-post">
+        <header>
+            <div class="title">
+                <h2>{{post.title}}</h2>
+            </div>
+            <div class="meta">
+                <time class="published" datetime="2015-11-01">{{post.createdAt | date('d/M/Y')}}</time>
+                <a href="single-post?post_id={{post._id}}" class="author"><span class="name">{{post.by}}</span><img src="img/avatar.jpg" alt="" /></a>
+            </div>
+        </header>
+        <a href="#"class="image featured"><img src="{{siteUrl}}/uploads/posts/{{post.imageUrl.filename}}" alt="" /></a>
+        <hr>
+        <section>
+            {{post.content}}
+        </section>
+    </article>
+{% endblock %}

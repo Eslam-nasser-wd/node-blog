@@ -92,34 +92,26 @@
 					</ul>
 				</section>
           </section>
-		  {% block body %}{% endblock %}
-			<!-- Sidebar -->
-					<section id="sidebar">
-
-						<!-- Intro -->
-							<section id="intro">
-								<a href="#" class="logo"><img src="{{siteUrl}}/uploads/settings/{{general.site_logo.filename}}" alt="" /></a>
-								<header>
-									<h2>{{general.site_name}}</h2>
-									{#<p>{{general.site_description}}</a></p>#}
-								</header>
-							</section>
-
-						<!-- Footer -->
-							<section id="footer">
-								<ul class="icons">
-									<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-									<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-								<p class="copyright">&copy; All rights reserved.</p>
-							</section>
-
-					</section>
-
-			</div>
+		  <div id="main">
+                <div class="post about-page">
+                    <div class="logo">
+                        <img src="{{siteUrl}}/uploads/settings/{{general.site_logo.filename}}" alt="{{general.site_name}}">
+                    </div>
+                    <div class="site-name">
+                        <h2>{{general.site_name}}</h2>
+                    </div>
+                    <ul class="icons">
+                        <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+                        <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                    <div class="site-description">
+                        {{general.site_description}}
+                    </div>
+                </div>
+          </div>
 
 		<!-- Scripts -->
 			<script src="/js/jquery.min.js"></script>

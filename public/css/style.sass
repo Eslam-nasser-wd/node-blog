@@ -1,1 +1,54 @@
 @import 'theme/theme.scss'
+
+.single-post
+    header .title
+        padding: 2em 3em 2em 3em
+    header .meta
+        padding: 1em 3em 1em 3em
+
+#header .links
+    overflow: initial
+    ul li
+        span
+            padding: 20px 0
+            position: relative
+.has-dropdown
+    cursor: pointer
+    border-bottom: 0
+    font-family: "Raleway", Helvetica, sans-serif
+    font-size: 0.7em
+    font-weight: 400
+    letter-spacing: 0.25em
+    text-transform: uppercase
+    &:hover
+        .dropdown
+            display: block
+    .dropdown
+        position: absolute
+        width: 200px
+        background: #FFF
+        left: 0
+        top: 100%
+        display: none
+        a
+            color: initial
+            display: block !important
+            padding: 10px 20px
+            margin: 0 !important
+            border: 0 !important
+            padding-left: 20px !important
+            transition: .1s
+            &:hover
+                transform: translateX(5px)
+    .post>header .meta, .post>header .title
+        padding: 2em 3em 2em 3em
+
+
+.about-page
+    text-align: center
+    .logo
+        img
+            width: 150px
+    .site-name
+        h2
+            font-size: 40px

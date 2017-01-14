@@ -32,6 +32,7 @@ router.post('/', upload.single('postImage'), function(req, res){
     var newPost = new Post({
         title: req.body.postTitle,
         by: req.session.name,
+        writer_id: req.session.userId,
         category: req.body.postCategory,
         short_description: req.body.postSmallDescription,
         content: req.body.postContent,

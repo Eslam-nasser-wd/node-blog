@@ -13,5 +13,10 @@ module.exports = mongoose.model('Settings', new Schema({
     site_phone: String,
     location_lat: String,
     location_lng: String,
-    location_address: String
+    location_address: String,
+    
+    active: {
+        type: Boolean,
+        default: 'true'
+    }
 }));

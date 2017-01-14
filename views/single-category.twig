@@ -1,0 +1,35 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <!-- Main -->
+    <div id="main">
+        <!-- Post -->
+        {% for post in posts %}
+        <article class="post">
+            <header>
+                <div class="title">
+                    <h2><a href="single-post?post_id={{post._id}}">{{post.title}}</a></h2>
+                    <p>{{post.short_description[:50]}}</p>
+                </div>
+                <div class="meta">
+                    <time class="published" datetime="2015-11-01">{{post.createdAt | date('d/M/Y')}}</time>
+                    <a href="single-post?post_id={{post._id}}" class="author"><span class="name">{{post.by}}</span></a>
+                </div>
+            </header>
+            <a href="single-post?post_id={{post._id}}" class="image featured"><img src="{{siteUrl}}/uploads/posts/{{post.imageUrl.filename}}" alt="" /></a>
+            <p>
+                {{post.short_description}}
+            </p>
+            <footer>
+                <ul class="actions">
+                    <li><a href="single-post?post_id={{post._id}}" class="button big">Continue Reading</a></li>
+                </ul>
+                <ul class="stats">
+                    <li><a href="#">{{post.category}}</a></li>
+                    <li><a href="single-post?post_id={{post._id}}" class="icon fa-eye">{{post.views}}</a></li>
+                </ul>
+            </footer>
+        </article>
+        {% endfor %}
+    </div>
+{% endblock %}

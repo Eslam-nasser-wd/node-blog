@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <!-- Main -->
+    <div id="main">
+        <!-- Post -->
+        <article class="post contact-page">
+            <form method="post" action="contact/send">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" type="text" name="name" placeholder="Enter Name"/>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="email" name="email" placeholder="Enter Email"/>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" name="message" rows="8" placeholder="Enter Message..."></textarea>
+                </div>
+                <button class="btn btn-default" type="submit">Submit</button>
+            </form>
+        </article>
+    </div>
+{% endblock %}

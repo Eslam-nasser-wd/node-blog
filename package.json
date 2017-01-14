@@ -1,7 +1,7 @@
 {
   "name": "mvc-blog",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "./bin/www",
   "engines": {
     "node": "4.5.0",
     "npm": "4.0.2"
@@ -21,6 +21,7 @@
     "morgan": "^1.7.0",
     "multer": "^1.2.1",
     "node-sass-middleware": "0.9.8",
+    "nodemailer": "^2.7.0",
     "password-hash": "^1.2.2",
     "serve-favicon": "~2.3.0",
     "twig": "~0.9.5"
